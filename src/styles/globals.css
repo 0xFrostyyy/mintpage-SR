@@ -125,3 +125,19 @@ body {
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+@media screen and (max-width: 500px) {
+  /* For resolutions 500px and lower */
+  body {
+    background-image: url("../images/mobile_mint_page.png");
+    /* Additional background properties */
+  }
+}
+
+@media screen and (min-width: 501px) {
+  /* For resolutions 501px and higher */
+  body {
+    background-image: url("../images/high_res_4k.png");
+    background-size: cover;
+  }
+}
