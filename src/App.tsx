@@ -23,7 +23,6 @@ import {
   primaryColorConst,
   themeConst,
 } from "./consts/parameters";
-import CustomWallet from "./components/wallet"
 
 const urlParams = new URL(window.location.toString()).searchParams;
 const contractAddress = urlParams.get("contract") || contractConst || "";
@@ -271,7 +270,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen w-screen">
-      <ConnectWallet className="!absolute !right-4 !top-4 !bg-[#5ADF1A]" theme={theme} />
+      <ConnectWallet className="!absolute !bg-[#5ADF1A] !right-4 !top-4" theme={theme} />
       <div className="grid h-screen grid-cols-1 lg:grid-cols-12">
         <div className="hidden h-full w-full items-center justify-center lg:col-span-5 lg:flex lg:px-12">
           <HeadingImage
@@ -279,8 +278,8 @@ export default function Home() {
             isLoading={isLoading}
           />
         </div>
-        <div className="col-span-1 flex h-full w-full items-center justify-center lg:col-span-7">
-          <div className="flex mx-5 w-full max-w-xl flex-col gap-4 rounded-xl p-12 lg:border lg:border-gray-400 lg:dark:border-gray-800 bg-[#2C2B29]">
+        <div className="col-span-1  flex h-full w-full items-center justify-center lg:col-span-7">
+          <div className="flex bg-[#2C2B29] w-full max-w-xl flex-col gap-4 rounded-xl p-12 lg:border lg:border-gray-400 lg:dark:border-gray-800">
             <div className="mt-8 flex w-full xs:mb-8 xs:mt-0 lg:hidden">
               <HeadingImage
                 src={contractMetadata.data?.image || firstNft?.metadata.image}
@@ -400,7 +399,10 @@ export default function Home() {
                         contractQuery.contract?.getAddress() || ""
                       }
                       style={{
-                        backgroundColor: "#5ADF1A",
+                        backgroundColor:
+                          colors[primaryColor as keyof typeof colors] ||
+                          primaryColor,
+                          backgroundColor: "#5ADF1A",
                         maxHeight: "43px",
                       }}
                       theme={theme}
@@ -457,6 +459,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <PoweredBy />
     </div>
   );
 }
